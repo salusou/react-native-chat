@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import { 
-    View, 
-    Text, 
+import {
+    View,
+    Text,
     TouchableOpacity,
     StyleSheet,
     Image
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
 
-const icon = require('react-native-chat/src/img/chat.png');
+const icon = require('../img/chat.png');
 
 class HelpButton extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            
+
         }
     }
 
     componentDidMount() {
-        
+
     }
 
     render() {
@@ -36,7 +36,7 @@ class HelpButton extends Component {
                         request_id: this.props.request_id
                     })}
                 >
-                    <Image 
+                    <Image
                         style={styles.img}
                         source={icon}
                     />
