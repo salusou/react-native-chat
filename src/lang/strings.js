@@ -1,13 +1,13 @@
-import { NativeModules } from 'react-native';
+import {NativeModules, Platform} from 'react-native';
 
-var strings = require('./pt_BR.json');
+let strings = require('./pt_BR.json');
 
 const deviceLanguage =
-    Platform.OS === 'ios' 
-    ? 
+    Platform.OS === 'ios'
+    ?
         NativeModules.SettingsManager.settings.AppleLocale ||
         NativeModules.SettingsManager.settings.AppleLanguages[0]
-    : 
+    :
         NativeModules.I18nManager.localeIdentifier;
 
 

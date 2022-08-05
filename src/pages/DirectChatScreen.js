@@ -12,7 +12,7 @@ import { withNavigation } from 'react-navigation';
 import WebSocketServer from "../services/socket";
 import strings from '../lang/strings';
 
-const send = require('react-native-chat/src/img/send.png');
+const send = require('../img/send.png');
 
 class DirectChatScreen extends Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class DirectChatScreen extends Component {
         this.socket = WebSocketServer.connect(paramRoute.socket_url);
 
         this.willBlur = this.props.navigation.addListener("willBlur", () => {
-            
+
             this.unsubscribeSocket();
         })
 
@@ -83,16 +83,16 @@ class DirectChatScreen extends Component {
                 this.state.token,
                 this.state.receiver
             );
-    
+
             const { data } = response;
             const formattedArrayMessages = this.formatMessages(data.messages);
-    
-            this.setState({ 
+
+            this.setState({
                 messages: formattedArrayMessages,
                 ledger_id: data.user_ledger_id,
                 is_refreshing: false
             });
-            
+
         } catch (error) {
             this.setState({
                 is_refreshing: false
@@ -103,7 +103,7 @@ class DirectChatScreen extends Component {
 
     /**
      * Format messages array
-     * @param {*} messages 
+     * @param {*} messages
      */
     formatMessages (messages) {
         const formattedArrayMessages = messages;
@@ -142,14 +142,14 @@ class DirectChatScreen extends Component {
                 this.state.receiver,
                 messages[0].text
             )
-    
+
             if (!this.state.conversation) {
                 this.setState({
                     conversation: response.data.conversation_id
                 });
                 this.subscribeSocket();
             }
-    
+
             this.setState(previousState => ({
                 messages: GiftedChat.append(previousState.messages, messages),
             }));
@@ -239,9 +239,9 @@ class DirectChatScreen extends Component {
         return (
             <Send {...props}>
                 <View style={styles.contImg}>
-                    <Image 
+                    <Image
                         style={styles.send}
-                        source={send} 
+                        source={send}
                     />
                 </View>
             </Send>
@@ -255,7 +255,7 @@ class DirectChatScreen extends Component {
         return <RefreshControl
             colors={['#000']}
             refreshing={this.state.is_refreshing}
-            onRefresh={() => this.getMessages()} 
+            onRefresh={() => this.getMessages()}
         />
     }
 

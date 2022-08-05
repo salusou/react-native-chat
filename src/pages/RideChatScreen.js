@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
-import { 
-    View, 
-    TouchableOpacity, 
-    BackHandler, 
+import {
+    View,
+    BackHandler,
     Vibration,
     StyleSheet,
     Image,
     RefreshControl
 } from 'react-native';
 import Toolbar from '../components/ToolBar';
-import { 
-    GiftedChat, 
-    Send, 
-    Bubble, 
-    MessageText, 
-    Time, 
-    Day 
+import {
+    GiftedChat,
+    Send,
+    Bubble,
+    MessageText,
+    Time,
+    Day
 } from 'react-native-gifted-chat';
 import { getMessageChat, seeMessage, sendMessage } from '../services/api';
 import { withNavigation } from 'react-navigation';
 import WebSocketServer from "../services/socket";
 import strings from '../lang/strings';
 
-const send = require('react-native-chat/src/img/send.png');
+const send = require('../img/send.png');
 var color = '#FBFBFB';
 
 class RideChatScreen extends Component {
     constructor(props) {
         super(props)
-        const paramRoute = this.props.navigation.state != undefined ? this.props.navigation.state.params : this.props.route.params;
+        const paramRoute = this.props.navigation.state !== undefined ? this.props.navigation.state.params : this.props.route.params;
         this.state = {
             messages: [],
             idBotMessage: 1,
@@ -64,7 +63,7 @@ class RideChatScreen extends Component {
         this.willFocus = this.props.navigation.addListener("willFocus", async () => {
             await this.getConversation();
         });
-        
+
     }
 
     componentDidMount() {
@@ -89,12 +88,12 @@ class RideChatScreen extends Component {
         } catch (error) {
           console.log('this.componentWillUnmount Error:', error);
         }
-    
+
       }
 
     async getConversation(refresh = false) {
         this.setState({ isLoading: true, is_refreshing: true })
-        
+
         if (this.state.conversation_id) {
             try {
                 const response = await getMessageChat(
@@ -144,7 +143,7 @@ class RideChatScreen extends Component {
                 this.setState({ isLoading: false, is_refreshing: false  });
                 console.log(error);
             }
-            
+
         } else {
             console.log('Nao tem conversa salva')
             this.setState({ isLoading: false, is_refreshing: false });
@@ -198,7 +197,7 @@ class RideChatScreen extends Component {
             console.log('Erro subscribeSocketNewConversation:', error)
         }
     }
-    
+
     subscribeSocket() {
         console.log('this.state.conversationId', this.state.conversation_id)
 
@@ -257,7 +256,7 @@ class RideChatScreen extends Component {
 
     /**
      * set messages array with the new message
-     * @param {any} messages 
+     * @param {any} messages
      */
     async onSend(messages = []) {
         try {
@@ -302,15 +301,15 @@ class RideChatScreen extends Component {
 
     /**
      * Render custom footer
-     * @param {any} props 
+     * @param {any} props
      */
     renderSend = props => {
         if (props.text.trim()) { // text box filled
             return <Send {...props}>
                 <View style={styles.contImg}>
-                    <Image 
+                    <Image
                         style={styles.send}
-                        source={send} 
+                        source={send}
                     />
                 </View>
             </Send>
@@ -333,7 +332,7 @@ class RideChatScreen extends Component {
 
     /**
      * render bubble
-     * @param {any} props 
+     * @param {any} props
      */
     renderBubble(props) {
         return (
@@ -387,7 +386,7 @@ class RideChatScreen extends Component {
         return <RefreshControl
             colors={['#000']}
             refreshing={this.state.is_refreshing}
-            onRefresh={() => this.getConversation(true)} 
+            onRefresh={() => this.getConversation(true)}
         />
     }
 
@@ -435,10 +434,6 @@ const styles = StyleSheet.create({
     },
     timeRight: {
         color: '#fff'
-    },
-    leftBubble: {
-        backgroundColor: '#FBFBFB',
-        marginTop: 10
     },
     rightBubble: {
         backgroundColor: '#FBFBFB',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { 
+import {
     View,
     TouchableOpacity,
     StyleSheet,
@@ -15,7 +15,7 @@ import Toolbar from '../components/ToolBar';
 import strings from '../lang/strings';
 import PerfilImage from '../components/PerfilImage';
 
-const box_img = require('react-native-chat/src/img/box.png');
+const box_img = require('../img/box.png');
 
 class ListDirectsScreen extends Component {
     constructor(props) {
@@ -128,12 +128,12 @@ class ListDirectsScreen extends Component {
                         </TouchableOpacity>
                     </View>
                 }
-                
+
                 <View style={{ flex: 1 }}>
                     {
-                        this.state.conversations.length > 0 
+                        this.state.conversations.length > 0
                         ?
-                        <FlatList 
+                        <FlatList
                             data={this.state.conversations}
                             keyExtractor={(x, i) => i.toString()}
                             renderItem={({ item, index }) => (
@@ -141,8 +141,8 @@ class ListDirectsScreen extends Component {
                                     onPress={() => this.navigateToChatScreen(item)}
                                 >
                                     <View style={styles.row} >
-                                        
-                                        <PerfilImage 
+
+                                        <PerfilImage
                                             src={item.picture}
                                         />
 
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: "bold",
         marginBottom: 10
-    },  
+    },
     img: {
         width: 50,
         height: 50,
