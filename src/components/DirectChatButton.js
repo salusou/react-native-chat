@@ -3,16 +3,10 @@ import {
     View,
     TouchableOpacity,
     StyleSheet,
-    Vibration,
-    Image,
     Text
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
-import { getConversation } from '../services/api';
-import WebSocketServer from "../services/socket";
-import Badger from './Badger';
 
-const icon = require('react-native-chat/src/img/chat.png');
 import strings from '../lang/strings';
 
 class DirectChatButton extends Component {

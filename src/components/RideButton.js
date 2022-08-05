@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { 
+import {
     View,
     TouchableOpacity,
     StyleSheet,
@@ -11,7 +11,7 @@ import { getConversation } from '../services/api';
 import WebSocketServer from "../services/socket";
 import Badger from './Badger';
 
-const icon = require('react-native-chat/src/img/chat.png');
+const icon = require('../img/chat.png');
 
 class RideButton extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class RideButton extends Component {
     }
 
     componentDidMount() {
-        
+
     }
 
     subscribeSocketConversation(id) {
@@ -87,7 +87,7 @@ class RideButton extends Component {
             }
         }
     }
-    
+
     /**
      * Play the sound request
      */
@@ -101,7 +101,7 @@ class RideButton extends Component {
             console.log('getConversation', data);
 
             this.subscribeSocketConversation(data.id);
-            
+
 			this.setState({
                 receiveID: data.user.id,
                 conversation_id: data.id,
@@ -133,7 +133,7 @@ class RideButton extends Component {
             }
         }
     }
-    
+
     async navigateTo() {
         let conversationId = this.state.conversation_id;
 
@@ -171,7 +171,7 @@ class RideButton extends Component {
                                 left: -8,
                                 zIndex: 999
                             }} />
-                        <Image 
+                        <Image
                             style={styles.img}
                             source={icon}
                         />

@@ -8,7 +8,7 @@ import {
   Image
 } from 'react-native';
 
-const arrow = require('react-native-chat/src/img/left-arrow.png');
+const arrow = require('../img/left-arrow.png');
 const { width } = Dimensions.get('window');
 const statusbarHeight = getStatusBarHeight(true);
 

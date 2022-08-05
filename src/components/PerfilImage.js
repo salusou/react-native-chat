@@ -4,7 +4,7 @@ import {
     Image
 } from 'react-native';
 
-const default_img = require('react-native-chat/src/img/user.png');
+const default_img = require('../img/user.png');
 
 class PerfilImage extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class PerfilImage extends Component {
     componentDidMount() {
         if (this.props.src) {
             this.setState({
-                image: { 
+                image: {
                     uri: this.props.src
                 }
             })
